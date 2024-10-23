@@ -1,0 +1,76 @@
+### User Registration
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "username": "Mamatha",
+  "password": "password789"
+}
+
+### User Login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "Krishna",
+  "password": "password123"
+}
+
+### Save the token from login response as `token`
+### You can then use it in subsequent requests like this:
+### @token = eyJhbGciOiJIUzI1NiIsInR...
+
+### Add a New Transaction (Income)
+POST http://localhost:3000/transactions
+Content-Type: application/json
+Authorization: Bearer {"mySecretToken"}
+
+{
+  "type": "income",
+  "category": "Salary",
+  "amount": 5000,
+  "date": "2024-10-20",
+  "description": "October Salary"
+}
+
+### Add a New Transaction as expense
+POST http://localhost:3000/transactions
+Content-Type: application/json
+Authorization: Bearer {"mySecretToken"}
+
+{
+  "type": "expense",
+  "category": "Food",
+  "amount": 150,
+  "date": "2024-10-21",
+  "description": "Dinner at restaurant"
+}
+
+### Get All Transactions
+GET http://localhost:3000/transactions
+Authorization: Bearer {"mySecretToken"}
+
+### Get a Transaction by ID
+GET http://localhost:3000/transactions/1
+Authorization: Bearer {"mySecretToken"}
+
+### Update a Transaction by ID
+PUT http://localhost:3000/transactions/1
+Content-Type: application/json
+Authorization: Bearer {"mySecretToken"}
+
+{
+  "type": "expense",
+  "category": "Food",
+  "amount": 200,
+  "date": "2024-10-21",
+  "description": "Updated Dinner expense"
+}
+
+### Delete a Transaction by ID
+DELETE http://localhost:3000/transactions/1
+Authorization: Bearer {"mySecretToken"}
+
+### Get Summary of Transactions
+GET http://localhost:3000/summary
+Authorization: Bearer {"mySecretToken"}
